@@ -1,17 +1,17 @@
 <template>
-    <header id='header'>
-      <div id='logo'>
-        <h1>SELF DESIGN MAJOR</h1>
-      </div>
-      <nav>
-        <!-- <router-link to='/' @click='switchPage(0)'>案例研究</router-link>
+  <header id="header">
+    <div id="logo">
+      <h1 style="font-size: 700">LOGO</h1>
+    </div>
+    <nav id="nav">
+      <!-- <router-link to='/' @click='switchPage(0)'>案例研究</router-link>
         <router-link to='/' @click='switchPage(1)'>關於我們</router-link>
-        <router-link to='/' @click='switchPage(2)'>學生成果</router-link> -->
-        <a @click='switchPage(0)'>案例研究</a>
-        <a @click='switchPage(1)'>關於我們</a>
-        <a @click='switchPage(2)'>學生成果</a>
-      </nav>
-    </header>
+      <router-link to='/' @click='switchPage(2)'>學生成果</router-link>-->
+      <a @click="switchPage(0)">Case Studies</a>
+      <a @click="switchPage(1)">About Us</a>
+      <a @click="switchPage(2)">Students Life</a>
+    </nav>
+  </header>
 </template>
 <script>
 export default {
@@ -54,27 +54,30 @@ export default {
 };
 </script>
 <style scoped>
-  header {
+header {
   position: absolute;
   top: 4.6875vw;
   left: 6.25vw;
   right: 6.25vw;
   z-index: 999;
-  color: #FF424D;
+  color: #ff424d;
+}
+#nav {
+  transition: all 0.5s ease-in-out;
 }
 nav {
-    position: absolute;
-    left: 50vw;
-    bottom: 0;
-    font-size: 1.2rem;
-    transition-property: color, opacity, transform;
-    transition-duration: 600ms;
-    transition-timing-function: ease-in-out;
+  position: absolute;
+  left: 50vw;
+  bottom: 0;
+  font-size: 1.2rem;
+  transition-property: color, opacity, transform;
+  transition-duration: 600ms;
+  transition-timing-function: ease-in-out;
 }
 nav a {
   margin-right: 1.5em;
   cursor: pointer;
-  color: #FF424D;
+  color: #ff424d;
 }
 </style>
 
