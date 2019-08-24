@@ -2,11 +2,8 @@
   <div class="content-box">
     <div id="membrane">
       <div id="sector-home" class="sector">
-        <div
-          class="slide-imgholder"
-          v-bind:style="{ 'background-image': 'url(' + slidePhoto + ')' }"
-        >
-          <!-- <img :src="slidePhoto" /> -->
+        <div class="slide-imgholder" :style="{backgroundImage: 'url(' + slidePhoto + ')'}">
+          <!-- <img id="slide-img" :src="slidePhoto" /> -->
         </div>
       </div>
       <div
@@ -119,52 +116,52 @@
 </template>
 
 <script>
+import nthuCP from '@/assets/nthuCP.jpg';
+import nctuCP from '@/assets/nctuCP.jpg';
+import nchuCP from '@/assets/nchuCP.jpg';
+import brownCP from '@/assets/brownCP.jpg';
+import cornellCP from '@/assets/cornellCP.jpg';
+import yaleCP from '@/assets/yaleCP.jpg';
+import dartmouthCP from '@/assets/dartmouthCP.jpg';
+
 export default {
   name: 'HelloWorld',
   data() {
     return {
       currentPage: 0,
       currentOffset: 0,
-      slidePhoto: 'https://picsum.photos/id/0/1000/1000',
+      slidePhoto: nthuCP,
       taiwanSimilarProgram: [
         {
           name: '清大實驗教育學程',
-          url: 'https://picsum.photos/id/0/1000/1000',
+          url: nthuCP
         },
         {
           name: '交大百川學士學程',
-          url: 'https://picsum.photos/id/1/1000/1000',
+          url: nctuCP
         },
         {
           name: '成大不分系學士學程',
-          url: 'https://picsum.photos/id/2/1000/1000',
-        },
+          url: nchuCP
+        }
       ],
       foreignSimilarProgram: [
         {
           name: 'Brown: Independent Concentration ',
-          url: 'https://picsum.photos/id/3/1000/1000',
+          url: brownCP
         },
         {
           name: 'Cornell: College Scholar',
-          url: 'https://picsum.photos/id/4/1000/1000',
+          url: cornellCP
         },
         {
           name: 'Yale: Special Divisional Majors',
-          url: 'https://picsum.photos/id/5/1000/1000',
+          url: yaleCP
         },
         {
           name: 'Dartmouth: Special Majors',
-          url: 'https://picsum.photos/id/6/1000/1000',
-        },
-        {
-          name: 'Harvard: Special Concentration',
-          url: 'https://picsum.photos/id/7/1000/1000',
-        },
-        {
-          name: 'Princeton: Independent Concentration',
-          url: 'https://picsum.photos/id/8/1000/1000',
-        },
+          url: dartmouthCP
+        }
       ],
       teamMembers: [
         {
@@ -172,36 +169,36 @@ export default {
           engName: 'Su-Yen Chen',
           role: '計畫主持人',
           url:
-            'https://tcp-prod.s3.amazonaws.com/images/avatars_zeke.width-600.jpg',
+            'https://tcp-prod.s3.amazonaws.com/images/avatars_zeke.width-600.jpg'
         },
         {
           chineseName: '李佳純',
           engName: 'Chiachun',
           role: '計畫助理',
           url:
-            'https://tcp-prod.s3.amazonaws.com/images/avatars_lev.width-600.jpg',
+            'https://tcp-prod.s3.amazonaws.com/images/avatars_lev.width-600.jpg'
         },
         {
           chineseName: '林芳如',
           engName: 'Fangzu',
           role: '招集人',
           url:
-            'https://tcp-prod.s3.amazonaws.com/images/avatars_lev.width-600.jpg',
+            'https://tcp-prod.s3.amazonaws.com/images/avatars_lev.width-600.jpg'
         },
         {
           chineseName: '阮羿寧',
           engName: 'Yining-Juan',
           role: '副招集人',
           url:
-            'https://tcp-prod.s3.amazonaws.com/images/avatars_lev.width-600.jpg',
+            'https://tcp-prod.s3.amazonaws.com/images/avatars_lev.width-600.jpg'
         },
         {
           chineseName: 'Karen',
           engName: 'Karen',
           role: '翻譯實習生',
           url:
-            'https://tcp-prod.s3.amazonaws.com/images/avatars_lev.width-600.jpg',
-        },
+            'https://tcp-prod.s3.amazonaws.com/images/avatars_lev.width-600.jpg'
+        }
       ],
       nthuStudents: [
         { name: '林芳如', description: '達祖小學支教，國際論壇召集人' },
@@ -210,14 +207,14 @@ export default {
         { name: '林芳如', description: '達祖小學支教，國際論壇召集人' },
         { name: '林芳如', description: '達祖小學支教，國際論壇召集人' },
         { name: '林芳如', description: '達祖小學支教，國際論壇召集人' },
-        { name: '林芳如', description: '達祖小學支教，國際論壇召集人' },
-      ],
+        { name: '林芳如', description: '達祖小學支教，國際論壇召集人' }
+      ]
     };
   },
   methods: {
     navHide(target) {
       const nav = document.getElementById('nav');
-      if (document.getElementById(target).scrollTop > 125) {
+      if (document.getElementById(target).scrollTop > 100) {
         nav.style.bottom = '200px';
       } else {
         nav.style.bottom = '0px';
@@ -229,12 +226,12 @@ export default {
       } else {
         this.slidePhoto = this.foreignSimilarProgram[idx].url;
       }
-    },
+    }
   },
   mounted() {
     const header = document.getElementById('header'); // 第二个命令台输出的结果
     header.style.color = '#ff424d';
-  },
+  }
 };
 </script>
 
@@ -254,7 +251,12 @@ body {
 .slide-imgholder {
   width: 100%;
   height: 100%;
+  background-size: 100% 100%;
   transition: all 0.8s ease-in-out;
+}
+.slide-imgholder img {
+  width: 100%;
+  height: 100vh;
 }
 .scheme-pink {
   background-color: #fff8e7;
@@ -285,7 +287,7 @@ body {
   box-sizing: border-box;
 }
 .big-text {
-  font-size: 5.5vw;
+  font-size: 4.5vw;
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -469,12 +471,12 @@ body {
   overflow-y: scroll;
 }
 .taiwan-program-title:hover {
-  margin-left: -25%;
-  transition: ease-in-out 0.3s;
+  margin-left: -10%;
+  transition: ease-in-out 0.5s;
   width: 200%;
 }
 .foreign-program-title:hover {
-  margin-left: -110%;
+  margin-left: -80%;
   transition: ease-in-out 1.5s;
   width: 200%;
 }

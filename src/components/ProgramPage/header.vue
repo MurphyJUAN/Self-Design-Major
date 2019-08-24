@@ -1,25 +1,31 @@
 <template>
   <header id="header">
-    <div id="logo">
-      <h1 style="font-size: 700">LOGO</h1>
-    </div>
+    <div id="logo"></div>
     <nav id="nav">
-      <!-- <router-link to='/' @click='switchPage(0)'>案例研究</router-link>
-        <router-link to='/' @click='switchPage(1)'>關於我們</router-link>
-      <router-link to='/' @click='switchPage(2)'>學生成果</router-link>-->
-      <a @click="switchPage(0)">Case Studies</a>
-      <a @click="switchPage(1)">About Us</a>
-      <a @click="switchPage(2)">Students Life</a>
+      <a
+        v-for="(nav, idx) in tabs"
+        :key="nav.title+idx"
+        @click="switchPage(idx)"
+        :class="{'active': nav.active}"
+      >{{nav.title}}</a>
     </nav>
   </header>
 </template>
 <script>
+import logoBlack from '@/assets/LOGoBlack.png';
+
 export default {
   name: 'HelloWorld',
   data() {
     return {
       currentPage: 0,
       currentOffset: 0,
+      logo: logoBlack,
+      tabs: [
+        { title: '案例研究', active: true },
+        { title: '關於我們', active: false },
+        { title: '我們的學生', active: false },
+      ],
     };
   },
   methods: {
@@ -27,8 +33,12 @@ export default {
       this.horizontalSwitch(num);
     },
     horizontalSwitch(num) {
+      this.tabs[this.currentPage].active = false;
+      this.tabs[num].active = true;
       if (num === 2) {
         document.getElementById('header').style.color = 'white';
+      } else if (num === 1) {
+        document.getElementById('header').style.color = 'black';
       } else {
         document.getElementById('header').style.color = '#FF424D';
       }
@@ -73,11 +83,16 @@ nav {
   transition-property: color, opacity, transform;
   transition-duration: 600ms;
   transition-timing-function: ease-in-out;
+  font-weight: 400;
 }
 nav a {
   margin-right: 1.5em;
   cursor: pointer;
   color: #ff424d;
+}
+
+.active {
+  border-bottom: solid 1px;
 }
 </style>
 
